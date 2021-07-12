@@ -10,7 +10,7 @@ void mpi_init(int argc, char* argv[], int mpi_thread_type, int &provided, int &r
 int main (int argc, char* argv[])
 {
     int rank, size, provided;
-    mpi_init(argc, argv[], mpi_thread_type, &provided, &rank, &size);
+    mpi_init(argc, argv[], mpi_thread_type, &provided, rank, size);
 
     MPI_Finalize();
     return 0;
