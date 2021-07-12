@@ -5,9 +5,19 @@
 
 using namespace std;
 
+void mpi_init(int argc, char* argv[], int mpi_thread_type, int &provided, int &rank, int &size);
+
 int main (int argc, char* argv[])
 {
     int rank, size, provided;
+    mpi_init(argc, argv[], mpi_thread_type, &provided, &rank, &size);
+
+    MPI_Finalize();
+    return 0;
+}
+
+void mpi_init(int argc, char* argv[], int mpi_thread_type, int &provided, int &rank, int &size);
+{
     MPI_Init_thread(&argc, &argv, MPI_THREAD_FUNNELED, &provided);
     MPI_Comm_rank (MPI_COMM_WORLD, &rank);
     MPI_Comm_size (MPI_COMM_WORLD, &size);
@@ -45,8 +55,5 @@ int main (int argc, char* argv[])
         {
             printf("The threading support level: MPI_THREAD_FUNNELED\n");
         }
-     }
-
-    MPI_Finalize();
-    return 0;
+     } 
 }
