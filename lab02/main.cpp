@@ -47,6 +47,6 @@ int main (int argc, char* argv[])
         }
      }
 
-    MPI_Fialize();
+    MPI_Finalize();
     return 0;
 }
