@@ -18,7 +18,7 @@ int main (int argc, char* argv[])
     char hostname[50];
     gethostname(hostname, 50);
 
-    pid_t pid = getpit();
+    pid_t pid = getpid();
 
     fprintf(stderr, "Time: %lf. Hostname: %s. MPI rank: %d. Process ID: %d. \n", t, hostname, rank, pid);
 
