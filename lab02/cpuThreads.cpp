@@ -9,7 +9,8 @@
 #include "cpuThreads.h"
 
 extern "C"
-void thread_proc(int tnum, int rank) {
+void thread_proc(int tnum, int rank) 
+{
 fprintf(stderr, "Thread %d started at node %d... \n", tnum, rank);
 
 auto start = std::chrono::system_clock::now();
@@ -24,14 +25,17 @@ fprintf(stderr, "Time: %lf. MPI rank: %d. Process ID: %d. Thread index: %d. paus
 }
 
 extern "C"
-void testThreads(int rank){
+void testThreads(int rank)
+{
     std::vector<std::thread> threads;
-    for(int i = 0; i < std::thread::hardware_concurrency()-1; i++){
+    for(int i = 0; i < std::thread::hardware_concurrency()-1; i++)
+    {
         std::thread thr(thread_proc, i, rank);
         threads.emplace_back(std::move(thr));
     }
     
-    for(auto& thr : threads) {
-        thr.join()
+    for(auto& thr : threads) 
+    {
+        thr.join();
     }
 }
