@@ -26,7 +26,7 @@ fprintf(stderr, "Time: %lf. MPI rank: %d. Process ID: %d. Thread index: %d. paus
 extern "C"
 void testThreads(int rank){
     std::vector<std::thread> threads;
-    for(int i = 0; i < std::thread::hardware_concurrency()-1; i++){
+    for(int i = 0; i < std::thread::hardware_concurrency()-1; i++)
         std::thread thr(thread_proc, i, rank);
         threads.emplace_back(std::move(thr));
     }
